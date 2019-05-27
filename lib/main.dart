@@ -38,7 +38,6 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      physics: ScrollPhysics(),
       child: Material(
         color: Colors.grey[200],
         child: Column(
@@ -46,62 +45,72 @@ class _MyHomePageState extends State<MyHomePage> {
             Stack(
               children: <Widget>[
                 Container(
+                  alignment: Alignment.centerLeft,
                   height: 140,
                   width: double.infinity,
                   color: Color(0xff2196F3),
+                  padding: EdgeInsets.only(top: 30.0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Flexible(
+                        fit: FlexFit.tight,
                         child: Padding(
-                          padding: const EdgeInsets.only(top: 30.0, left: 18.0),
+                          padding:
+                              const EdgeInsets.only(left: 18.0, bottom: 10.0),
                           child: Column(
                             children: <Widget>[
-                              Row(
-                                children: <Widget>[
-                                  ImageIcon(
-                                    AssetImage('assets/menus.png'),
-                                    color: Colors.white,
-                                  ),
-                                  Text(
-                                    'Sales Team',
-                                    style: TextStyle(
-                                        color: Colors.white, fontSize: 18.0),
-                                  ),
-                                ],
-                              ),
-                              SizedBox(
-                                height: 12.0,
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                    left: 28.0, top: 10.0),
+                              Flexible(
+                                fit: FlexFit.tight,
                                 child: Row(
                                   children: <Widget>[
-                                    Icon(Icons.calendar_today,
-                                        color: Colors.grey, size: 12.0),
+                                    ImageIcon(
+                                      AssetImage('assets/menus.png'),
+                                      color: Colors.white,
+                                    ),
                                     SizedBox(
                                       width: 6.0,
                                     ),
                                     Text(
+                                      'Sales Team',
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 18.0,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 28.0),
+                                child: Row(
+                                  children: <Widget>[
+                                    Icon(Icons.calendar_today,
+                                        color: Colors.grey[300], size: 12),
+                                    SizedBox(
+                                      width: 4.0,
+                                    ),
+                                    Text(
                                       '10.05.2018',
                                       style: TextStyle(
-                                          color: Colors.grey[300],
-                                          fontSize: 10.0),
+                                        color: Colors.grey[300],
+                                        fontSize: 10.0,
+                                      ),
                                     ),
                                     SizedBox(
                                       width: 15.0,
                                     ),
                                     Icon(Icons.alarm,
-                                        color: Colors.grey, size: 12.0),
+                                        color: Colors.grey[300], size: 12.0),
                                     SizedBox(
-                                      width: 6.0,
+                                      width: 4.0,
                                     ),
                                     Text(
-                                      '9pm - 10pm',
+                                      '13:00 - 15:00 pm',
                                       style: TextStyle(
-                                          color: Colors.grey[300],
-                                          fontSize: 10.0),
+                                        color: Colors.grey[300],
+                                        fontSize: 10.0,
+                                      ),
                                     ),
                                   ],
                                 ),
@@ -112,21 +121,24 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                       SizedBox(
                         height: 30,
+                        width: double.infinity,
                         child: Stack(
                           fit: StackFit.expand,
                           children: <Widget>[
-                            LinearProgressIndicator(
-                              backgroundColor:
-                                  Colors.transparent.withOpacity(0.1),
-                              valueColor:
-                                  new AlwaysStoppedAnimation(Colors.white),
-                              value: 0.6,
+                            Container(
+                              child: LinearProgressIndicator(
+                                backgroundColor:
+                                    Colors.transparent.withOpacity(0.1),
+                                valueColor: new AlwaysStoppedAnimation<Color>(
+                                    Colors.white),
+                                value: 0.6,
+                              ),
                             ),
                             Container(
                               alignment: Alignment.centerLeft,
                               padding: EdgeInsets.only(left: 18.0),
                               child: Text(
-                                'Key Activities 6min',
+                                'Key Activities 6 min',
                                 style: TextStyle(
                                     color: Colors.blue,
                                     fontWeight: FontWeight.bold),
@@ -137,7 +149,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                     ],
                   ),
-                )
+                ),
               ],
             ),
             SizedBox(
@@ -146,10 +158,12 @@ class _MyHomePageState extends State<MyHomePage> {
             Padding(
               padding: const EdgeInsets.only(left: 4.0, right: 4.0),
               child: Card(
+                elevation: 0.1,
                 child: Container(
                   height: 100,
                   width: double.infinity,
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Container(
                         height: 5,
@@ -170,15 +184,24 @@ class _MyHomePageState extends State<MyHomePage> {
                               child: Text(
                                 'Reconnect with volunters leaders',
                                 style: TextStyle(
-                                    color: Colors.green[800],
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 16.0),
+                                  color: Colors.green[800],
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 16.0,
+                                ),
                               ),
                             ),
+                            SizedBox(
+                              width: 20.0,
+                            ),
+                            // Icon(Icons.info,
+                            //     color: Colors.grey[400], size: 13.0),
                             ImageIcon(
-                              AssetImage("assets/infos.png"),
+                              AssetImage(
+                                'assets/infos.png',
+                              ),
                               size: 12.0,
-                            )
+                              color: Colors.grey,
+                            ),
                           ],
                         ),
                       ),
@@ -190,7 +213,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           style: TextStyle(
                               color: Colors.green[800], fontSize: 10.0),
                         ),
-                      )
+                      ),
                     ],
                   ),
                 ),
@@ -199,32 +222,60 @@ class _MyHomePageState extends State<MyHomePage> {
             Padding(
               padding: const EdgeInsets.only(left: 14.0, top: 20.0),
               child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
                   Text(
                     'Key Activities',
-                    style: TextStyle(color: Colors.grey[500], fontSize: 14.0),
+                    style: TextStyle(color: Colors.grey[850], fontSize: 14.0),
                   ),
                   SizedBox(
                     width: 10.0,
                   ),
-                  ImageIcon(AssetImage('assets/infos.png'), size: 12.0),
+                  ImageIcon(
+                    AssetImage(
+                      'assets/infos.png',
+                    ),
+                    size: 12.0,
+                    color: Colors.grey[700],
+                  ),
                 ],
               ),
             ),
             Container(
-              height: MediaQuery.of(context).size.height,
+              padding: EdgeInsets.only(left: 4.0, right: 4.0),
+              height: 450,
               child: GridView(
                 physics: ScrollPhysics(),
+                scrollDirection: Axis.vertical,
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
                 ),
                 children: <Widget>[
-                  girVIew('01', 'Traning', Colors.teal[300], Colors.teal[100]),
-                  girVIew('02', 'Quality Control', Colors.orange[300],
-                      Colors.orange[100]),
-                  girVIew('01', 'Traning', Colors.red[300], Colors.red[100]),
-                  girVIew('02', 'Quality Control', Colors.blue[300],
-                      Colors.blue[100]),
+                  griView(
+                    '01',
+                    'Traning',
+                    Colors.teal[300],
+                    Colors.teal[100],
+                  ),
+                  griView(
+                    '02',
+                    'Quality Controlssss',
+                    Colors.orange[300],
+                    Colors.orange[100],
+                  ),
+                  griView(
+                    '01',
+                    'Traning',
+                    Colors.red[300],
+                    Colors.red[100],
+                  ),
+                  griView(
+                    '02',
+                    'Quality Control',
+                    Colors.blue[300],
+                    Colors.blue[100],
+                  ),
                 ],
               ),
             ),
@@ -234,7 +285,7 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  Card girVIew(String num, String title, Color color1, Color color2) {
+  Widget griView(String num, String title, Color color, Color color2) {
     return Card(
       elevation: 0.1,
       child: Column(
@@ -242,14 +293,14 @@ class _MyHomePageState extends State<MyHomePage> {
           Container(
             height: 90,
             decoration: BoxDecoration(
-              color: color1,
+              color: color,
               borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(5.0),
                 topRight: Radius.circular(5.0),
               ),
             ),
             child: Padding(
-              padding: const EdgeInsets.only(left: 18.0),
+              padding: const EdgeInsets.only(left: 10.0),
               child: Row(
                 children: <Widget>[
                   Container(
@@ -269,41 +320,49 @@ class _MyHomePageState extends State<MyHomePage> {
                   SizedBox(
                     width: 6.0,
                   ),
-                  Text(
-                    title,
-                    style: TextStyle(color: Colors.white, fontSize: 18.0),
-                  )
+                  Container(
+                    width: MediaQuery.of(context).size.width / 3.1,
+                    child: Text(
+                      title,
+                      style: TextStyle(color: Colors.white, fontSize: 18.0),
+                      softWrap: true,
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 2,
+                    ),
+                  ),
                 ],
               ),
             ),
           ),
-          Container(
-            padding: EdgeInsets.only(left: 18.0, top: 8.0, bottom: 10.0),
-            alignment: Alignment.centerLeft,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text(
-                  'Skills Matrix',
-                  style: TextStyle(color: color1, fontSize: 16.0),
-                ),
-                SizedBox(
-                  height: 10.0,
-                ),
-                Text(
-                  'Skills Matrix',
-                  style: TextStyle(color: color1, fontSize: 16.0),
-                ),
-                SizedBox(
-                  height: 10.0,
-                ),
-                Text(
-                  'Skills Matrix',
-                  style: TextStyle(color: color1, fontSize: 16.0),
-                ),
-              ],
+          Padding(
+            padding: const EdgeInsets.only(left: 18.0, top: 8.0, bottom: 10.0),
+            child: Container(
+              alignment: Alignment.centerLeft,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text(
+                    'Skills Matrix',
+                    style: TextStyle(color: color, fontSize: 16.0),
+                  ),
+                  SizedBox(
+                    height: 10.0,
+                  ),
+                  Text(
+                    'Product Handling',
+                    style: TextStyle(color: color, fontSize: 16.0),
+                  ),
+                  SizedBox(
+                    height: 10.0,
+                  ),
+                  Text(
+                    'Produ awareness',
+                    style: TextStyle(color: color, fontSize: 16.0),
+                  ),
+                ],
+              ),
             ),
-          ),
+          )
         ],
       ),
     );
