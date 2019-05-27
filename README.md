@@ -2,7 +2,7 @@
 
 A new Flutter project.
 
-![](https://github.com/Janxaoshu/sales_team/blob/master/446831676.jpg)
+![](https://github.com/Janxaoshu/sales_team/blob/master/Screenshot%20from%202019-05-27%2023-08-54.png)
 ## Getting Started
 
 This project is a starting point for a Flutter application.
